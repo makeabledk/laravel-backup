@@ -21,9 +21,16 @@ class BackupDestinationStatusFactory
         return collect($monitorConfig['disks'])->map(function ($diskName) use ($monitorConfig) {
             $backupDestination = BackupDestination::create($diskName, $monitorConfig['name']);
 
-            return (new BackupDestinationStatus($backupDestination, $diskName))
+            return (new BackupDestinationStatus($backupDestination, $diskName, static::buildInspections($monitorConfig)))
                 ->setMaximumAgeOfNewestBackupInDays($monitorConfig['newestBackupsShouldNotBeOlderThanDays'])
                 ->setMaximumStorageUsageInMegabytes($monitorConfig['storageUsedMayNotBeHigherThanMegabytes']);
         });
+    }
+
+    protected static function buildInspections($monitorConfig)
+    {
+        return collect(array_get($monitorConfig, 'inspections'))->map(function ($inspection) {
+            return new $inspection;
+        })->toArray();
     }
 }
