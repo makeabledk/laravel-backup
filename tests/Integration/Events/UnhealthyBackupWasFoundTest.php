@@ -3,6 +3,7 @@
 namespace Spatie\Backup\Test\Integration\Events;
 
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Backup\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
