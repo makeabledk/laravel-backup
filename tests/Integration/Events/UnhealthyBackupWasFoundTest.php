@@ -3,6 +3,7 @@
 namespace Spatie\Backup\Test\Integration\Events;
 
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Backup\BackupDestination\BackupDestination;
@@ -117,7 +118,6 @@ class UnhealthyBackupWasFoundTest extends TestCase
         $this->app['config']->set('backup.monitorBackups.0.inspections', [FakeFailingHealthInspection::class]);
 
         return $this;
-
     }
 
     protected function searchString($string)

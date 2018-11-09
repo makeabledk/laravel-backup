@@ -19,4 +19,11 @@ abstract class HealthInspection
     {
         throw new InvalidHealthCheck($message);
     }
+
+    protected function failIf($condition, $message)
+    {
+        if ($condition) {
+            $this->fail($message);
+        }
+    }
 }
