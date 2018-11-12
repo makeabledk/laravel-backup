@@ -2,9 +2,9 @@
 
 namespace Spatie\Backup\Tasks\Monitor\Inspections;
 
-use Spatie\Backup\BackupDestination\BackupDestination;
 use Spatie\Backup\Helpers\Format;
 use Spatie\Backup\Tasks\Monitor\HealthInspection;
+use Spatie\Backup\BackupDestination\BackupDestination;
 
 class IncreasingFileSize extends HealthInspection
 {
@@ -21,9 +21,9 @@ class IncreasingFileSize extends HealthInspection
             return;
         }
 
-        list ($newestSize, $previousSize) = [
+        list($newestSize, $previousSize) = [
             $backupDestination->backups()->get(0)->size(),
-            $backupDestination->backups()->get(1)->size()
+            $backupDestination->backups()->get(1)->size(),
         ];
 
         $relativeSize = $newestSize / $previousSize;
@@ -45,6 +45,7 @@ class IncreasingFileSize extends HealthInspection
         if (! is_numeric($value) && preg_match('/%/', $value)) {
             return floatval($value) / 100;
         }
+
         return floatval($value);
     }
 }
