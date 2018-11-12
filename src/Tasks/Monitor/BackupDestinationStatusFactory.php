@@ -30,7 +30,7 @@ class BackupDestinationStatusFactory
     protected static function buildInspections($monitorConfig)
     {
         return collect(array_get($monitorConfig, 'inspections'))->map(function ($options, $inspection) {
-            if (is_integer($inspection)) {
+            if (is_int($inspection)) {
                 $inspection = $options;
                 $options = [];
             }
