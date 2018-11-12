@@ -5,14 +5,14 @@ namespace Spatie\Backup\Test\Integration\Events;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Notification;
-use Spatie\Backup\BackupDestination\BackupDestination;
-use Spatie\Backup\Events\UnhealthyBackupWasFound;
-use Spatie\Backup\Exceptions\InvalidHealthCheck;
 use Spatie\Backup\Notifications\Notifiable;
-use \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound as UnhealthyBackupWasFoundNotification;
-use Spatie\Backup\Tasks\Monitor\HealthInspection;
+use Illuminate\Support\Facades\Notification;
 use Spatie\Backup\Test\Integration\TestCase;
+use Spatie\Backup\Exceptions\InvalidHealthCheck;
+use Spatie\Backup\Events\UnhealthyBackupWasFound;
+use Spatie\Backup\Tasks\Monitor\HealthInspection;
+use Spatie\Backup\BackupDestination\BackupDestination;
+use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound as UnhealthyBackupWasFoundNotification;
 
 class UnhealthyBackupWasFoundTest extends TestCase
 {
@@ -132,7 +132,8 @@ class FakeFailingHealthInspection extends HealthInspection
 {
     public static $reason;
 
-    public function handle(BackupDestination $backupDestination) {
+    public function handle(BackupDestination $backupDestination)
+    {
         throw (static::$reason ?: new \Exception('some exception message'));
     }
 }

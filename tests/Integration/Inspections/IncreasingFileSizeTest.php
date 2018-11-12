@@ -3,19 +3,11 @@
 namespace Spatie\Backup\Test\Integration\Inspections;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Notification;
-use Spatie\Backup\BackupDestination\BackupDestination;
+use Spatie\Backup\Test\Integration\TestCase;
 use Spatie\Backup\Events\HealthyBackupWasFound;
 use Spatie\Backup\Events\UnhealthyBackupWasFound;
-use Spatie\Backup\Exceptions\InvalidHealthCheck;
-use Spatie\Backup\Notifications\Notifiable;
-use \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound as UnhealthyBackupWasFoundNotification;
-use Spatie\Backup\Tasks\Monitor\HealthInspection;
 use Spatie\Backup\Tasks\Monitor\Inspections\IncreasingFileSize;
-use Spatie\Backup\Test\Integration\TestCase;
 
 class IncreasingFileSizeTest extends TestCase
 {
@@ -71,7 +63,7 @@ class IncreasingFileSizeTest extends TestCase
     public function reduction_tolerance_can_be_configured()
     {
         $this->app['config']->set('backup.monitorBackups.0.inspections', [
-            IncreasingFileSize::class => ['reductionTolerance' => '10%']
+            IncreasingFileSize::class => ['reductionTolerance' => '10%'],
         ]);
 
         $this->fakeBackup(1, 100);
