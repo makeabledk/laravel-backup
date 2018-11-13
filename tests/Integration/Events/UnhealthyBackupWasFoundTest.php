@@ -6,10 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Backup\Notifications\Notifiable;
 use Illuminate\Support\Facades\Notification;
+use Spatie\Backup\Tasks\Monitor\HealthCheck;
 use Spatie\Backup\Test\Integration\TestCase;
 use Spatie\Backup\Exceptions\InvalidHealthCheck;
 use Spatie\Backup\Events\UnhealthyBackupWasFound;
-use Spatie\Backup\Tasks\Monitor\HealthCheck;
 use Spatie\Backup\BackupDestination\BackupDestination;
 use Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound as UnhealthyBackupWasFoundNotification;
 

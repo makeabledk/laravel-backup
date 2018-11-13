@@ -64,6 +64,7 @@ class BackupDestinationStatus
         } catch (\Exception $exception) {
             return new HealthCheckFailure($check, $exception);
         }
+
         return true;
     }
 
@@ -88,7 +89,6 @@ class BackupDestinationStatus
     /** @var bool */
     protected $reachable;
 
-
     public function connectionError(): Exception
     {
         return $this->backupDestination->connectionError();
@@ -98,7 +98,6 @@ class BackupDestinationStatus
     {
         return $this->reachable;
     }
-
 
     /**
      * @deprecated
@@ -179,5 +178,4 @@ class BackupDestinationStatus
     {
         return Format::humanReadableSize($this->usedStorage());
     }
-
 }
