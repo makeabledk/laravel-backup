@@ -5,9 +5,9 @@ namespace Spatie\Backup\Notifications\Notifications;
 use Spatie\Backup\Notifications\BaseNotification;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Spatie\Backup\Tasks\Monitor\HealthCheckFailure;
 use Illuminate\Notifications\Messages\SlackAttachment;
 use Spatie\Backup\Events\UnhealthyBackupWasFound as UnhealthyBackupWasFoundEvent;
-use Spatie\Backup\Tasks\Monitor\HealthCheckFailure;
 
 class UnhealthyBackupWasFound extends BaseNotification
 {
