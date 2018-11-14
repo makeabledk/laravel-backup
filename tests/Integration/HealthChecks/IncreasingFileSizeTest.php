@@ -4,10 +4,10 @@ namespace Spatie\Backup\Test\Integration\Inspections;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
-use Spatie\Backup\Tasks\Monitor\HealthChecks\IncreasingFileSize;
 use Spatie\Backup\Test\Integration\TestCase;
 use Spatie\Backup\Events\HealthyBackupWasFound;
 use Spatie\Backup\Events\UnhealthyBackupWasFound;
+use Spatie\Backup\Tasks\Monitor\HealthChecks\IncreasingFileSize;
 
 class IncreasingFileSizeTest extends TestCase
 {
@@ -19,7 +19,7 @@ class IncreasingFileSizeTest extends TestCase
         parent::setUp();
 
         $this->app['config']->set('backup.monitor_backups.0.health_checks', [
-            IncreasingFileSize::class
+            IncreasingFileSize::class,
         ]);
     }
 
