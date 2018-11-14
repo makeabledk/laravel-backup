@@ -45,6 +45,7 @@ class IncreasingFileSize extends HealthCheck
         if (! is_numeric($value) && preg_match('/%/', $value)) {
             return floatval($value) / 100;
         }
+
         return floatval($value);
     }
 }
