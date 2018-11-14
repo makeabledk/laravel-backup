@@ -55,6 +55,7 @@ class BackupDestinationStatus
         foreach ($healthChecks as $healthCheck) {
             if (($result = $this->check($healthCheck)) !== true) {
                 $this->failedHealthCheck = $result;
+
                 return false;
             }
         }

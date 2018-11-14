@@ -25,6 +25,7 @@ class MonitorCommand extends BaseCommand
             if ($backupDestinationStatus->isHealthy()) {
                 $this->info("The backups on {$diskName} are considered healthy.");
                 event(new HealthyBackupWasFound($backupDestinationStatus));
+
                 return;
             }
 

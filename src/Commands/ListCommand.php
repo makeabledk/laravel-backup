@@ -2,9 +2,9 @@
 
 namespace Spatie\Backup\Commands;
 
-use Spatie\Backup\BackupDestination\Backup;
 use Spatie\Backup\Helpers\Format;
 use Illuminate\Support\Collection;
+use Spatie\Backup\BackupDestination\Backup;
 use Spatie\Backup\Tasks\Monitor\BackupDestinationStatus;
 use Spatie\Backup\Tasks\Monitor\BackupDestinationStatusFactory;
 
@@ -46,7 +46,7 @@ class ListCommand extends BaseCommand
             Format::emoji($backupDestinationStatus->isHealthy()),
             'amount' => $destination->backups()->count(),
             'newest' => $this->getFormattedBackupDate($destination->newestBackup()),
-            'usedStorage' => Format::humanReadableSize($destination->usedStorage())
+            'usedStorage' => Format::humanReadableSize($destination->usedStorage()),
         ];
 
         if (! $destination->isReachable()) {
