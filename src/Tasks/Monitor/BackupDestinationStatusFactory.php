@@ -2,7 +2,6 @@
 
 namespace Spatie\Backup\Tasks\Monitor;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Spatie\Backup\BackupDestination\BackupDestination;
 
@@ -34,6 +33,7 @@ class BackupDestinationStatusFactory
                 $class = $options;
                 $options = [];
             }
+
             return static::buildHealthCheck($class, $options);
         })->toArray();
     }
